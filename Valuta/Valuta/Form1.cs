@@ -12,9 +12,25 @@ namespace Valuta
 {
     public partial class Form1 : Form
     {
+        
         public Form1()
         {
             InitializeComponent();
+            diFeladat();            
+        }
+
+        private void diFeladat()
+        {
+            var mnbService = new MnbServiceReference.MNBArfolyamServiceSoapClient();
+
+            var request = new MnbServiceReference.GetExchangeRatesRequestBody()
+            {
+                currencyNames = "EUR",
+                startDate = "2020-01-01",
+                endDate = "2020-06-30"
+            };
+            var response = mnbService.GetExchangeRates(request);
+            var result = response.GetExchangeRatesResult;
         }
     }
 }
