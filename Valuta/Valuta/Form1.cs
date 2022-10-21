@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml;
 using Valuta.Entities;
 
@@ -19,9 +20,30 @@ namespace Valuta
         {
             InitializeComponent();
             diFeladat();
-            dataGridView1.DataSource = Rates.ToList();
+            dataGridView1.DataSource = Rates;
             xmlfeladat();
-        }        
+            adatfeladat();
+        }
+
+        private void adatfeladat()
+        {
+            chartRateData.DataSource = Rates;
+
+            var series = chartRateData.Series[0];
+            series.ChartType = SeriesChartType.Line;
+            series.XValueMember = "Date";
+            series.YValueMembers = "Value";
+            series.BorderWidth = 2;
+
+            var legend = chartRateData.Legends[0];
+            legend.Enabled = false;
+
+            var chartArea = chartRateData.ChartAreas[0];
+            chartArea.AxisX.MajorGrid.Enabled = false;
+            chartArea.AxisY.MajorGrid.Enabled = false;
+            chartArea.AxisY.IsStartedFromZero = false;
+        }
+
         private string diFeladat()
         {
             var mnbService = new MnbServiceReference.MNBArfolyamServiceSoapClient();
