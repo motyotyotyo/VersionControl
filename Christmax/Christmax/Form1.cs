@@ -62,7 +62,7 @@ namespace Christmax
 
         private void ballBtn_Click(object sender, EventArgs e)
         {
-            Factory = new BallFactory()
+            Factory = new BallFactory
             {
                 BallColor = clrBtn.BackColor
             };
