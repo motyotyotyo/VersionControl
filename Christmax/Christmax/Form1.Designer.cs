@@ -36,11 +36,13 @@ namespace Christmax
             this.label1 = new System.Windows.Forms.Label();
             this.carBtn = new System.Windows.Forms.Button();
             this.ballBtn = new System.Windows.Forms.Button();
+            this.clrBtn = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.clrBtn);
             this.mainPanel.Controls.Add(this.ballBtn);
             this.mainPanel.Controls.Add(this.carBtn);
             this.mainPanel.Controls.Add(this.label1);
@@ -91,6 +93,16 @@ namespace Christmax
             this.ballBtn.UseVisualStyleBackColor = true;
             this.ballBtn.Click += new System.EventHandler(this.ballBtn_Click);
             // 
+            // clrBtn
+            // 
+            this.clrBtn.BackColor = System.Drawing.Color.Maroon;
+            this.clrBtn.Location = new System.Drawing.Point(485, 394);
+            this.clrBtn.Name = "clrBtn";
+            this.clrBtn.Size = new System.Drawing.Size(75, 23);
+            this.clrBtn.TabIndex = 3;
+            this.clrBtn.UseVisualStyleBackColor = false;
+            this.clrBtn.Click += new System.EventHandler(this.clrBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -113,6 +125,7 @@ namespace Christmax
         private System.Windows.Forms.Button ballBtn;
         private System.Windows.Forms.Button carBtn;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button clrBtn;
     }
 }
 
