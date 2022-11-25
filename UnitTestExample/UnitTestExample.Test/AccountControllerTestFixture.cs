@@ -28,5 +28,27 @@ namespace UnitTestExample.Test
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
         }
+        //A jelszó legalább 8 karakter hosszú kell legyen, csak az angol ABC betűiből és
+        //számokból állhat, és tartalmaznia kell legalább egy kisbetűt, egy nagybetűt és
+        //egy számot
+        [
+            Test,
+            TestCase("Abcdefgh",false),
+            TestCase("ABCDEFG1", false),
+            TestCase("abcdefg1", false),
+            TestCase("abcdef1", false),
+            TestCase("Abcdefg1", true),
+        ]
+        public void TestValidatePassword(string password, bool expectedResult)
+        {
+            //Arrange
+            var accountController = new AccountController();
+
+            //Act
+            var actualResult = accountController.ValidatePassword(password);
+
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
     }
 }
