@@ -24,7 +24,10 @@ namespace MikroSzim
             Population = GetPopulation(@"C:\Temp\nép.csv");
             BirthProbabilities = GetBirthProbabilities(@"C:\Temp\születés.csv");
             DeathProbabilities = GetDeathProbabilities(@"C:\Temp\halál.csv");
+        }
 
+        private void Simulation()
+        {
             for (int year = 2005; year < 2024; year++)
             {
                 for (int i = 0; i < Population.Count; i++)
@@ -40,6 +43,7 @@ namespace MikroSzim
                 Console.WriteLine(string.Format("Év:{0} Fiúk{1} Lányok{2}", year, nbrOfMales, nbrOfFemales));
             }
         }
+
         public List<Person> GetPopulation(string csvpath)
         {
             List<Person> population = new List<Person>();
@@ -97,6 +101,7 @@ namespace MikroSzim
             }
             return deathProbabilities;
         }
+
         private void SimStep(int year, Person person)
         {
             if (!person.IsAlive) return;
@@ -122,6 +127,11 @@ namespace MikroSzim
                     Population.Add(újszülött);
                 }
             }
+        }
+
+        private void buttonStrt_Click(object sender, EventArgs e)
+        {
+            Simulation();
         }
     }
 }
