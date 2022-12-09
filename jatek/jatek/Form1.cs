@@ -25,11 +25,18 @@ namespace jatek
 
             ga = gc.ActivateDisplay();
             this.Controls.Add(ga);
-            for (int i = 0; i < populationSize-1; i++)
+            gc.GameOver += Gc_GameOver;
+            for (int i = 0; i < populationSize; i++)
             {
                 gc.AddPlayer(nbrOfSteps);
             }
-            gc.Start();
+            gc.Start();            
+        }
+        
+        private void Gc_GameOver(object sender)
+        {
+            generation++;
+            label1.Text = string.Format("{0}. generáció", generation);
         }
     }
 }
